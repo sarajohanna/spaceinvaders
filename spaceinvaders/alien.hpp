@@ -25,10 +25,18 @@ public:
     
     void draw();
     
+    void setCollisionData();
+    
+    const Coords& getCentre();
+    
+    const int& getRadius();
+    
 private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
+    Coords _centre;
+    int radius;
     // std::vector<Bomb> _bombs;
 
 };

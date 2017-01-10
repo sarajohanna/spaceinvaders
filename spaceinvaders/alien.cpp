@@ -20,3 +20,17 @@ void Alien::update() {
 void Alien::draw() {
     drawObject(SPRITE_ALIEN, _coords, _imgWidth, _imgHeight);
 }
+
+void Alien::setCollisionData() {
+    _centre.x = _coords.x + (_imgWidth/2);
+    _centre.y = _coords.y +(_imgHeight/2);
+    radius = _imgHeight/2;
+}
+
+const Coords& Alien::getCentre() {
+    return _centre;
+}
+
+const int& Alien::getRadius() {
+    return radius;
+}

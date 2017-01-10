@@ -32,6 +32,19 @@ World::World()
 void World::update()
 {
     _ship.update();
+    
+    //Collision control.. Ta in det som behövs i funktionen, lägg den i utils?
+    
+//    for (int i = 0; i < _aliens.size(); ++i) {
+//        int alienRadius = _aliens[i].getRadius();
+//        Coords alienCentre = _aliens[i].getCentre();
+//        int alienY = alienCentre.y;
+//        if ()
+//    }
+    
+    
+    
+    
     //for each alien, call update
     
 }

@@ -28,6 +28,18 @@ void Bullet::draw() {
 
 const Coords& Bullet::getCoords() {
     return _coords;
+}
 
+void Bullet::setCollisionData() {
+    _centre.x = _coords.x + (_imgWidth/2);
+    _centre.y = _coords.y +(_imgHeight/2);
+    radius = _imgHeight/2;
+}
 
+const Coords& Bullet::getCentre() {
+    return _centre;
+}
+
+const int& Bullet::getRadius() {
+    return radius;
 }

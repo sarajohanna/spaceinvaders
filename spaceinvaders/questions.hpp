@@ -22,4 +22,11 @@
 
 
 
+//Kollision med alien
+//När du ska kolla krock: varje Alien har en mittpunkt och en radie. Tänk dig att radien gör en cirkel runt monstret. Kolla avståndet mellan kulan och mittpunkten på monstret. Om det är mindre än radien är den innanför cirkeln. Då har du en krock.
+//Sphere collision kallas de
+//Timer för bullets (och ev alien movements?)
+
+
+
 #endif /* questions_hpp */
