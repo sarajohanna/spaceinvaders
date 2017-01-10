@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5E4372E41E22A6600066689A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4372E31E22A6600066689A /* main.cpp */; };
+		5E4372EE1E22A6D10066689A /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4372ED1E22A6D10066689A /* SDL2.framework */; };
+		5E4372F01E22A6E70066689A /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4372EF1E22A6E60066689A /* SDL2_image.framework */; };
+		5E4372F31E22A74F0066689A /* gameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4372F11E22A74F0066689A /* gameObject.cpp */; };
+		5E4372F61E23E53E0066689A /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4372F41E23E53E0066689A /* utils.cpp */; };
+		5E4372FC1E23F8520066689A /* alien.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4372FA1E23F8520066689A /* alien.cpp */; };
+		5E4372FF1E23F8640066689A /* ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4372FD1E23F8640066689A /* ship.cpp */; };
+		5E4373021E23F8760066689A /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4373001E23F8760066689A /* world.cpp */; };
+		5E4373051E2430A20066689A /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4373031E2430A20066689A /* bullet.cpp */; };
+		5E4373081E24413C0066689A /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4373061E24413C0066689A /* timer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +34,24 @@
 /* Begin PBXFileReference section */
 		5E4372E01E22A6600066689A /* spaceinvaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spaceinvaders; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E4372E31E22A6600066689A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5E4372EB1E22A6BF0066689A /* Library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Library; path = ../../../../../Library; sourceTree = "<group>"; };
+		5E4372ED1E22A6D10066689A /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		5E4372EF1E22A6E60066689A /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		5E4372F11E22A74F0066689A /* gameObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gameObject.cpp; sourceTree = "<group>"; };
+		5E4372F21E22A74F0066689A /* gameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = gameObject.hpp; sourceTree = "<group>"; };
+		5E4372F41E23E53E0066689A /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = utils.cpp; sourceTree = "<group>"; };
+		5E4372F51E23E53E0066689A /* utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
+		5E4372F81E23E8C00066689A /* questions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = questions.hpp; sourceTree = "<group>"; };
+		5E4372FA1E23F8520066689A /* alien.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = alien.cpp; sourceTree = "<group>"; };
+		5E4372FB1E23F8520066689A /* alien.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = alien.hpp; sourceTree = "<group>"; };
+		5E4372FD1E23F8640066689A /* ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ship.cpp; sourceTree = "<group>"; };
+		5E4372FE1E23F8640066689A /* ship.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ship.hpp; sourceTree = "<group>"; };
+		5E4373001E23F8760066689A /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
+		5E4373011E23F8760066689A /* world.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = world.hpp; sourceTree = "<group>"; };
+		5E4373031E2430A20066689A /* bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bullet.cpp; sourceTree = "<group>"; };
+		5E4373041E2430A20066689A /* bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bullet.hpp; sourceTree = "<group>"; };
+		5E4373061E24413C0066689A /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
+		5E4373071E24413C0066689A /* timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4372F01E22A6E70066689A /* SDL2_image.framework in Frameworks */,
+				5E4372EE1E22A6D10066689A /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +72,7 @@
 			children = (
 				5E4372E21E22A6600066689A /* spaceinvaders */,
 				5E4372E11E22A6600066689A /* Products */,
+				5E4372EA1E22A6BF0066689A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +88,33 @@
 			isa = PBXGroup;
 			children = (
 				5E4372E31E22A6600066689A /* main.cpp */,
+				5E4373061E24413C0066689A /* timer.cpp */,
+				5E4373071E24413C0066689A /* timer.hpp */,
+				5E4372F51E23E53E0066689A /* utils.hpp */,
+				5E4372F41E23E53E0066689A /* utils.cpp */,
+				5E4372F21E22A74F0066689A /* gameObject.hpp */,
+				5E4372F11E22A74F0066689A /* gameObject.cpp */,
+				5E4373011E23F8760066689A /* world.hpp */,
+				5E4373001E23F8760066689A /* world.cpp */,
+				5E4372FE1E23F8640066689A /* ship.hpp */,
+				5E4372FD1E23F8640066689A /* ship.cpp */,
+				5E4373041E2430A20066689A /* bullet.hpp */,
+				5E4373031E2430A20066689A /* bullet.cpp */,
+				5E4372FB1E23F8520066689A /* alien.hpp */,
+				5E4372FA1E23F8520066689A /* alien.cpp */,
+				5E4372F81E23E8C00066689A /* questions.hpp */,
 			);
 			path = spaceinvaders;
+			sourceTree = "<group>";
+		};
+		5E4372EA1E22A6BF0066689A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E4372EF1E22A6E60066689A /* SDL2_image.framework */,
+				5E4372ED1E22A6D10066689A /* SDL2.framework */,
+				5E4372EB1E22A6BF0066689A /* Library */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +174,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4373051E2430A20066689A /* bullet.cpp in Sources */,
+				5E4372F61E23E53E0066689A /* utils.cpp in Sources */,
+				5E4372F31E22A74F0066689A /* gameObject.cpp in Sources */,
+				5E4373081E24413C0066689A /* timer.cpp in Sources */,
 				5E4372E41E22A6600066689A /* main.cpp in Sources */,
+				5E4372FF1E23F8640066689A /* ship.cpp in Sources */,
+				5E4373021E23F8760066689A /* world.cpp in Sources */,
+				5E4372FC1E23F8520066689A /* alien.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +278,10 @@
 		5E4372E81E22A6600066689A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					Library/Frameworks,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -223,6 +289,10 @@
 		5E4372E91E22A6600066689A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					Library/Frameworks,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
