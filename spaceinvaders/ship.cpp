@@ -16,10 +16,12 @@ Ship::Ship(const Coords& coords)
 
 void Ship::update()
 {
+        float deltaTime = timer.getDeltaTime();
+    
         if (gameObj.event.key.keysym.sym == SDLK_RIGHT)
-            _coords.x += 10;
+            _coords.x += (0.1 * deltaTime);
         else if (gameObj.event.key.keysym.sym == SDLK_LEFT)
-            _coords.x -= 10;
+            _coords.x -= (0.1 * deltaTime);
         else if (gameObj.event.key.keysym.sym == SDLK_SPACE)
             
                 _bullets.push_back(Bullet(_coords));    

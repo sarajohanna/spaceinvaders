@@ -30,5 +30,8 @@ private:
     float lastTime;
 };
 
+extern Timer timer;
+
+
 
 #endif /* timer_hpp */

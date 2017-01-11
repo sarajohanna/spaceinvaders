@@ -37,7 +37,6 @@ private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
-    Timer _timer;
     float _bulletSpeed = 0.1;
     Coords _centre;
     int radius;

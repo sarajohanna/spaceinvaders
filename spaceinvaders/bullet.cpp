@@ -17,9 +17,8 @@ void Bullet::update() {
     //Use a timer instead!
     //_coords.y -=0.01;
     
-    float deltaTime = _timer.getDeltaTime();
+    float deltaTime = timer.getDeltaTime();
     _coords.y = (_coords.y - (deltaTime * _bulletSpeed));
-    _timer.setDeltaTime();
 }
 
 void Bullet::draw() {

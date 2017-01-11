@@ -27,3 +27,6 @@ float Timer::getDeltaTime()
 {
     return deltaTime;
 }
+
+Timer timer = {};
+

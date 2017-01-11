@@ -36,15 +36,18 @@ int main(int argc, const char * argv[]) {
     // Create the main game loop (while (true) with breaks)
     while(true) {
         
+        timer.setDeltaTime();
+        
         // Quit or update world
         if ( SDL_PollEvent(&gameObj.event) ) {
             if (gameObj.event.type == SDL_QUIT)
                 break;
             else if (gameObj.event.type == SDL_KEYUP && gameObj.event.key.keysym.sym == SDLK_ESCAPE)
                 break;
-            else
-                world.update();
         }
+        
+        world.update();
+    
         
         // Draw updated world with assets (clearing the screen first which is done in draw)
         world.draw();
