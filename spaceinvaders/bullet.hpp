@@ -37,10 +37,9 @@ private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
-    float _bulletSpeed = 0.1;
+    float _bulletSpeed = 300;
     Coords _centre;
     int radius;
-
 };
 
 #endif /* bullet_hpp */

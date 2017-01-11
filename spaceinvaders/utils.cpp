@@ -27,7 +27,6 @@ void loadSprites()
     {
         gameObj.textures[i] = IMG_LoadTexture(gameObj.renderer, sprites[i]);
         assert(gameObj.textures[i] != nullptr);
-
     }
 }
 
@@ -42,5 +41,6 @@ void drawObject(SPRITES sprite, Coords coords, int width, int height)
     SDL_RenderCopy(gameObj.renderer, gameObj.textures[sprite], NULL, &texr);
 }
 
+bool keysHeld[NUM_KEYS] = {false};
 
 

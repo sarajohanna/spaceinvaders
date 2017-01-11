@@ -7,12 +7,13 @@
 //
 
 #include <iostream>
-#include "world.hpp"
 #include "gameObject.hpp"
+#include "world.hpp"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
+    
     
     // Initialize SDL
     if(SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) < 0)
@@ -26,29 +27,46 @@ int main(int argc, const char * argv[]) {
     gameObj.win = SDL_CreateWindow("Spade Invaders", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, gameObj.winWidth, gameObj.winHeight, SDL_WINDOW_SHOWN);
     gameObj.renderer = SDL_CreateRenderer(gameObj.win, -1, SDL_RENDERER_ACCELERATED);
     
-    
     // Load assets/sprites
     loadSprites();
     
     // Create a world with ship, aliens, bullets. The world owns aliens and ship. Ship own bullets and the alien owns bomb.
     World world;
+    
+    bool gameIsRunning = true;
 
     // Create the main game loop (while (true) with breaks)
-    while(true) {
+    while(gameIsRunning) {
         
         timer.setDeltaTime();
         
         // Quit or update world
-        if ( SDL_PollEvent(&gameObj.event) ) {
-            if (gameObj.event.type == SDL_QUIT)
+        while ( SDL_PollEvent(&gameObj.event) ) {
+            if ((gameObj.event.type == SDL_QUIT)||(gameObj.event.type == SDL_KEYUP && gameObj.event.key.keysym.sym == SDLK_ESCAPE)) {
+                gameIsRunning = false;
                 break;
-            else if (gameObj.event.type == SDL_KEYUP && gameObj.event.key.keysym.sym == SDLK_ESCAPE)
-                break;
+            }
+            else if (gameObj.event.type == SDL_KEYDOWN) {
+                if (gameObj.event.key.keysym.sym == SDLK_RIGHT)
+                    keysHeld[KEY_RIGHT] = true;
+                else if (gameObj.event.key.keysym.sym == SDLK_LEFT)
+                    keysHeld[KEY_LEFT] = true;
+                else if(gameObj.event.key.keysym.sym == SDLK_SPACE)
+                    keysHeld[KEY_SPACE] = true;
+            }
+            else if (gameObj.event.type == SDL_KEYUP) {
+                if (gameObj.event.key.keysym.sym == SDLK_RIGHT)
+                    keysHeld[KEY_RIGHT] = false;
+                else if (gameObj.event.key.keysym.sym == SDLK_LEFT)
+                    keysHeld[KEY_LEFT] = false;
+                else if(gameObj.event.key.keysym.sym == SDLK_SPACE)
+                    keysHeld[KEY_SPACE] = false;
+            }
+            world.moveObjects();
         }
-        
-        world.update();
     
-        
+        world.update();
+
         // Draw updated world with assets (clearing the screen first which is done in draw)
         world.draw();
         

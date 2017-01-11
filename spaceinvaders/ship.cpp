@@ -14,23 +14,22 @@ Ship::Ship(const Coords& coords)
     _coords.y = coords.y; 
 }
 
-void Ship::update()
+void Ship::move()
 {
-        float deltaTime = timer.getDeltaTime();
+    float deltaTime = timer.getDeltaTime();
     
-        if (gameObj.event.key.keysym.sym == SDLK_RIGHT)
-            _coords.x += (0.1 * deltaTime);
-        else if (gameObj.event.key.keysym.sym == SDLK_LEFT)
-            _coords.x -= (0.1 * deltaTime);
-        else if (gameObj.event.key.keysym.sym == SDLK_SPACE)
-            
-                _bullets.push_back(Bullet(_coords));    
+    if (keysHeld[KEY_RIGHT])
+        _speedX = (100 * deltaTime);
+    else if (keysHeld[KEY_LEFT])
+        _speedX = -(100 * deltaTime);
+    else if (keysHeld[KEY_SPACE])
+        _bullets.push_back(Bullet(_coords));
 }
 
-void Ship::draw()
+void Ship::update()
 {
-    drawObject(SPRITE_SHIP, _coords, _imgWidth, _imgHeight);
-    
+    _coords.x += _speedX;
+
     for (int i = 0; i < _bullets.size(); ++i) {
         _bullets[i].update();
         if (_bullets[i].getCoords().y <= 0) {
@@ -38,7 +37,17 @@ void Ship::draw()
             _bullets.pop_back();
         }
     }
+}
+
+void Ship::draw()
+{
+    drawObject(SPRITE_SHIP, _coords, _imgWidth, _imgHeight);
     for (int i = 0; i < _bullets.size(); ++i) {
         _bullets[i].draw();
     }
+}
+
+const std::vector<Bullet>& Ship::getBullets()
+{
+    return _bullets;
 }

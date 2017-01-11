@@ -13,8 +13,8 @@
 
 struct Coords
 {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 enum SPRITES
@@ -29,5 +29,16 @@ enum SPRITES
 void loadSprites();
 
 void drawObject(SPRITES sprite, Coords coords, int width, int height);
+
+enum KEYS
+{
+    KEY_RIGHT,
+    KEY_LEFT,
+    KEY_SPACE,
+    NUM_KEYS
+};
+
+extern bool keysHeld[NUM_KEYS];
+
 
 #endif /* utils_hpp */

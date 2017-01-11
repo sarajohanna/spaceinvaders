@@ -24,9 +24,7 @@ public:
     void update();
     
     void draw();
-    
-    void setCollisionData();
-    
+        
     const Coords& getCentre();
     
     const int& getRadius();

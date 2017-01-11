@@ -20,6 +20,8 @@ class World {
 public:
     World();
     
+    void moveObjects();
+    
     void update();
     
     void draw();
@@ -29,7 +31,6 @@ private:
     std::vector<Alien> _aliens;
     int _imgWidthAlien = 32;
     int _numAliens = 20;
-
 };
 
 #endif /* world_hpp */

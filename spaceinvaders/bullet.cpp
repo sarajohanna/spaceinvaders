@@ -14,11 +14,11 @@ Bullet::Bullet(const Coords& coords) {
 }
 
 void Bullet::update() {
-    //Use a timer instead!
-    //_coords.y -=0.01;
-    
     float deltaTime = timer.getDeltaTime();
     _coords.y = (_coords.y - (deltaTime * _bulletSpeed));
+    _centre.x = _coords.x + (_imgWidth/2);
+    _centre.y = _coords.y + (_imgHeight/2);
+    radius = _imgHeight/2;
 }
 
 void Bullet::draw() {
@@ -27,12 +27,6 @@ void Bullet::draw() {
 
 const Coords& Bullet::getCoords() {
     return _coords;
-}
-
-void Bullet::setCollisionData() {
-    _centre.x = _coords.x + (_imgWidth/2);
-    _centre.y = _coords.y +(_imgHeight/2);
-    radius = _imgHeight/2;
 }
 
 const Coords& Bullet::getCentre() {

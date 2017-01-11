@@ -8,4 +8,4 @@
 
 #include "gameObject.hpp"
 
-GameObject gameObj;
+GameObject gameObj = {};

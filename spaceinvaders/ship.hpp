@@ -9,7 +9,6 @@
 #ifndef ship_hpp
 #define ship_hpp
 
-#include "utils.hpp"
 #include "gameObject.hpp"
 #include "bullet.hpp"
 #include <stdio.h>
@@ -24,14 +23,19 @@ public:
     Ship(const Coords& coords);
     
     // Move ship with keyboard
+    void move();
+    
     void update();
     
     void draw();
+    
+    const std::vector<Bullet>& getBullets();
 
 private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
+    float _speedX = 0;
     std::vector<Bullet> _bullets;
 };
 

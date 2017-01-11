@@ -20,7 +20,6 @@ void Timer::setDeltaTime()
     thisTime = SDL_GetTicks();
     deltaTime = (thisTime - lastTime)/1000;
     lastTime = thisTime;
-
 }
 
 float Timer::getDeltaTime()

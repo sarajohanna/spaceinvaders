@@ -7,6 +7,8 @@
 //
 
 #include "world.hpp"
+#include <cmath>
+#include<vector>
 
 World::World()
 {
@@ -29,6 +31,10 @@ World::World()
     }
 }
 
+void World::moveObjects() {
+    _ship.move();
+}
+
 void World::update()
 {
     _ship.update();
@@ -42,6 +48,33 @@ void World::update()
 //        if ()
 //    }
     
+    
+    //Collision detection alien and bullet
+
+    for (int i = 0; i < _aliens.size(); ++i) {
+        int alienRadius = _aliens[i].getRadius();
+        Coords alienCentre = _aliens[i].getCentre();
+        
+        //Get bullets here - do i need to do it like this?
+        std::vector<Bullet> bullets = _ship.getBullets();
+        
+        
+        
+        for (int j = 0; j < bullets.size(); ++j)
+        {
+            int bulletRadius = bullets[j].getRadius();
+            Coords bulletCentre = bullets[j].getCentre();
+            double distance = sqrt(pow((bulletCentre.y - alienCentre.y), 2) + pow((bulletCentre.x - alienCentre.x), 2));
+            
+            if ((distance) < (alienRadius + bulletRadius))
+            {
+                //_aliens.erase(_aliens.begin()+i);
+                _aliens[i]= _aliens[_aliens.size()-1];
+                _aliens.pop_back();
+                i--;
+            }
+        }
+    }
     
     
     
@@ -57,5 +90,4 @@ void World::draw()
     for (int i = 0; i < _aliens.size(); ++i) {
         _aliens[i].draw();
     }
-
 }

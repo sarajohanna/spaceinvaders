@@ -29,4 +29,16 @@
 
 
 
+
+
+//Bullets radie kommer du åt via en getfunktion tex
+//Kollisioner kollas i world för alla objekt
+//Alien()=default är samma som att skriva ={}
+//Om du inte har skapat nån annan konstruktor kommer en defaultkonstruktor skapas åt dig
+//Om du har skapat en konstruktor med inparam måste du skapa en defaultkonstruktor om den behövs nånstans
+//Tex om du addar objekt via defaultkonstruktor i en vektor
+//Måsvingarna skriver du som du vill men håll det konsekvent
+
+
+
 #endif /* questions_hpp */
