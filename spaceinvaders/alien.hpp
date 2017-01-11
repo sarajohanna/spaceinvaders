@@ -25,7 +25,7 @@ public:
     
     void draw();
         
-    const Coords& getCentre();
+    const Coords& getCenter();
     
     const int& getRadius();
     
@@ -33,7 +33,7 @@ private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
-    Coords _centre;
+    Coords _center;
     int radius;
     // std::vector<Bomb> _bombs;
 

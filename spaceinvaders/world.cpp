@@ -53,7 +53,7 @@ void World::update()
 
     for (int i = 0; i < _aliens.size(); ++i) {
         int alienRadius = _aliens[i].getRadius();
-        Coords alienCentre = _aliens[i].getCentre();
+        Coords alienCenter = _aliens[i].getCenter();
         
         //Get bullets here - do i need to do it like this?
         std::vector<Bullet> bullets = _ship.getBullets();
@@ -63,8 +63,8 @@ void World::update()
         for (int j = 0; j < bullets.size(); ++j)
         {
             int bulletRadius = bullets[j].getRadius();
-            Coords bulletCentre = bullets[j].getCentre();
-            double distance = sqrt(pow((bulletCentre.y - alienCentre.y), 2) + pow((bulletCentre.x - alienCentre.x), 2));
+            Coords bulletCenter = bullets[j].getCenter();
+            double distance = sqrt(pow((bulletCenter.y - alienCenter.y), 2) + pow((bulletCenter.x - alienCenter.x), 2));
             
             if ((distance) < (alienRadius + bulletRadius))
             {

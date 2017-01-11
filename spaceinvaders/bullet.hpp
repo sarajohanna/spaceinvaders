@@ -29,7 +29,7 @@ public:
     
     void setCollisionData();
     
-    const Coords& getCentre();
+    const Coords& getCenter();
     
     const int& getRadius();
     
@@ -38,7 +38,7 @@ private:
     int _imgWidth = 32;
     int _imgHeight = 32;
     float _bulletSpeed = 300;
-    Coords _centre;
+    Coords _center;
     int radius;
 };
 

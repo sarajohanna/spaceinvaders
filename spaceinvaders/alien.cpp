@@ -12,8 +12,8 @@ Alien::Alien(const Coords& coords)
 {
     _coords.x = coords.x;
     _coords.y = coords.y;
-    _centre.x = _coords.x + (_imgWidth/2);
-    _centre.y = _coords.y +(_imgHeight/2);
+    _center.x = _coords.x + (_imgWidth/2);
+    _center.y = _coords.y +(_imgHeight/2);
     radius = _imgHeight/2;
 }
 
@@ -26,9 +26,9 @@ void Alien::draw()
     drawObject(SPRITE_ALIEN, _coords, _imgWidth, _imgHeight);
 }
 
-const Coords& Alien::getCentre()
+const Coords& Alien::getCenter()
 {
-    return _centre;
+    return _center;
 }
 
 const int& Alien::getRadius()
