@@ -11,23 +11,23 @@
 
 #include <stdio.h>
 #include "utils.hpp"
+#include "timer.hpp"
 
-// This alien will have a bomb (or a vector with bombs?)
-
-class Alien {
+class Alien
+{
 public:
     Alien() = default;
     
     Alien(const Coords& coords);
-    //Not used now, maybe later if the aliens should move each X seconds
     
+    //Not used now, maybe later if the aliens should move each X seconds
     void update();
     
     void draw();
         
-    const Coords& getCenter();
+    const Coords& getCenter() const;
     
-    const int& getRadius();
+    const int& getRadius() const;
     
 private:
     Coords _coords;
@@ -35,8 +35,8 @@ private:
     int _imgHeight = 32;
     Coords _center;
     int radius;
+    Timer _alienTimer;
     // std::vector<Bomb> _bombs;
-
 };
 
 

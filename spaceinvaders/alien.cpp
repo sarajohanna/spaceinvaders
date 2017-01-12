@@ -8,6 +8,7 @@
 
 #include "alien.hpp"
 
+
 Alien::Alien(const Coords& coords)
 {
     _coords.x = coords.x;
@@ -19,6 +20,12 @@ Alien::Alien(const Coords& coords)
 
 void Alien::update()
 {
+    _alienTimer.setDeltaTime();
+
+//    if (timer.getDeltaTime() > 0.02)
+//    {
+//        _coords.x += 10;
+//    }
 }
 
 void Alien::draw()
@@ -26,12 +33,12 @@ void Alien::draw()
     drawObject(SPRITE_ALIEN, _coords, _imgWidth, _imgHeight);
 }
 
-const Coords& Alien::getCenter()
+const Coords& Alien::getCenter() const
 {
     return _center;
 }
 
-const int& Alien::getRadius()
+const int& Alien::getRadius() const
 {
     return radius;
 }

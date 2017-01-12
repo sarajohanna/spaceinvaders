@@ -20,66 +20,61 @@ World::World()
     
     // Create vector with aliens
     Coords coordAlien;
-    coordAlien.x = (gameObj.winWidth)/_numAliens;
-    coordAlien.y = gameObj.winHeight/2;
+    coordAlien.x = ((gameObj.winWidth)/(_numAliens/2)) + _aliensDistanceFromWall;
+    
     _aliens.reserve(_numAliens);
     int start = coordAlien.x;
     
-    for (int i = 0; i < _numAliens; ++i) {
+    for (int i = 0; i < _numAliens/2; ++i)
+    {
+        coordAlien.y = gameObj.winHeight/2;
         _aliens.push_back(Alien(coordAlien));
-        coordAlien.x = coordAlien.x + (gameObj.winWidth - (start * 2 + _imgWidthAlien))/(_numAliens - 1);
+        coordAlien.x = coordAlien.x + (gameObj.winWidth - (start * 2 + _imgWidthAlien))/((_numAliens/2) - 1);
     }
-}
-
-void World::moveObjects() {
-    _ship.move();
+    
+    coordAlien.x = start;
+    for (int i = _numAliens/2; i < _numAliens; ++i)
+    {
+        coordAlien.y = gameObj.winHeight/2 - 50;
+        _aliens.push_back(Alien(coordAlien));
+        coordAlien.x = coordAlien.x + (gameObj.winWidth - (start * 2 + _imgWidthAlien))/((_numAliens/2) - 1);
+    }
 }
 
 void World::update()
 {
     _ship.update();
     
-    //Collision control.. Ta in det som behövs i funktionen, lägg den i utils?
-    
-//    for (int i = 0; i < _aliens.size(); ++i) {
-//        int alienRadius = _aliens[i].getRadius();
-//        Coords alienCentre = _aliens[i].getCentre();
-//        int alienY = alienCentre.y;
-//        if ()
-//    }
-    
-    
     //Collision detection alien and bullet
-
-    for (int i = 0; i < _aliens.size(); ++i) {
-        int alienRadius = _aliens[i].getRadius();
-        Coords alienCenter = _aliens[i].getCenter();
+    for (int i = 0; i < _aliens.size(); ++i)
+    {
+        const int& alienRadius = _aliens[i].getRadius();
+        const Coords& alienCenter = _aliens[i].getCenter();
         
-        //Get bullets here - do i need to do it like this?
-        std::vector<Bullet> bullets = _ship.getBullets();
-        
-        
+        //Get all bullets from ship
+        std::vector<Bullet>& bullets = _ship.accessBullets();
         
         for (int j = 0; j < bullets.size(); ++j)
         {
-            int bulletRadius = bullets[j].getRadius();
-            Coords bulletCenter = bullets[j].getCenter();
+            //int bulletRadius = bullets[j].getRadius();
+            const Coords& bulletCenter = bullets[j].getCenter();
             double distance = sqrt(pow((bulletCenter.y - alienCenter.y), 2) + pow((bulletCenter.x - alienCenter.x), 2));
             
-            if ((distance) < (alienRadius + bulletRadius))
+            if ((distance) < (alienRadius))
             {
-                //_aliens.erase(_aliens.begin()+i);
+                //Delete alien
                 _aliens[i]= _aliens[_aliens.size()-1];
                 _aliens.pop_back();
-                i--;
+                
+                //Delete bullet
+                bullets[j] = bullets[bullets.size()-1];
+                bullets.pop_back();
+                
+                break;
             }
+        _aliens[i].update();
         }
     }
-    
-    
-    
-    //for each alien, call update
-    
 }
 
 void World::draw()

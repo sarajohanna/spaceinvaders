@@ -22,10 +22,11 @@ void Timer::setDeltaTime()
     lastTime = thisTime;
 }
 
-float Timer::getDeltaTime()
+const float& Timer::getDeltaTime() const
 {
     return deltaTime;
 }
+
 
 Timer timer = {};
 

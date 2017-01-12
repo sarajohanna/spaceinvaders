@@ -15,7 +15,8 @@
 #include "timer.hpp"
 
 
-class Bullet {
+class Bullet
+{
 public:
     Bullet() = default;
     
@@ -25,11 +26,10 @@ public:
     
     void draw();
     
-    const Coords& getCoords();
+    const Coords& getCoords() const;
     
-    void setCollisionData();
-    
-    const Coords& getCenter();
+    // First const is return type, second const is that I'm not changing member variables through the function
+    const Coords& getCenter() const;
     
     const int& getRadius();
     
@@ -37,7 +37,7 @@ private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
-    float _bulletSpeed = 300;
+    float _bulletSpeed = 500;
     Coords _center;
     int radius;
 };

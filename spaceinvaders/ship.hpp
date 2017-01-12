@@ -16,27 +16,27 @@
 
 // This ship will have a vector with bullets. It will be called in world and the coordinats will be sent to the constructor when created in world.
 
-class Ship {
+class Ship
+{
 public:
     Ship() = default;
     
     Ship(const Coords& coords);
     
-    // Move ship with keyboard
-    void move();
-    
     void update();
     
     void draw();
     
-    const std::vector<Bullet>& getBullets();
+    std::vector<Bullet>& accessBullets();
 
 private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
-    float _speedX = 0;
+    float _speedX = 100;
     std::vector<Bullet> _bullets;
+    Timer _bulletTimer;
+    float _dtBullet = 0.1;
 };
 
 

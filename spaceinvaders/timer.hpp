@@ -22,7 +22,7 @@ public:
     
     void setDeltaTime();
     
-    float getDeltaTime();
+    const float& getDeltaTime() const;
     
 private:
     float deltaTime;

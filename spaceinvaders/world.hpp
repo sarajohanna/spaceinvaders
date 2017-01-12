@@ -16,12 +16,11 @@
 
 // This world will have a ship (just one object in a variable) and aliens (a vector with aliens)
 
-class World {
+class World
+{
 public:
     World();
-    
-    void moveObjects();
-    
+        
     void update();
     
     void draw();
@@ -30,7 +29,8 @@ private:
     Ship _ship;
     std::vector<Alien> _aliens;
     int _imgWidthAlien = 32;
-    int _numAliens = 20;
+    int _numAliens = 26;
+    int _aliensDistanceFromWall = 70;
 };
 
 #endif /* world_hpp */
