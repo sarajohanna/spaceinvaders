@@ -40,7 +40,7 @@ private:
     int _imgHeight = 32;
     Coords _center;
     int radius;
-    int _alienSpeed = 2;
+    int _alienSpeed = 1;
     
     // std::vector<Bomb> _bombs;
 };

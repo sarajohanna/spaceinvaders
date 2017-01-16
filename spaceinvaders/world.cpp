@@ -72,6 +72,7 @@ void World::update()
             {
                 _aliens[j].setCoords(_alienMove);
             }
+            break;
         }
             
         else
