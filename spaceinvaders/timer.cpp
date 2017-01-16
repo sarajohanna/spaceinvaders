@@ -27,6 +27,11 @@ const float& Timer::getDeltaTime() const
     return deltaTime;
 }
 
+const float& Timer::getThisTime() const
+{
+    return thisTime;
+}
+
 
 Timer timer = {};
 

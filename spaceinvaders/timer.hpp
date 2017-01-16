@@ -23,6 +23,9 @@ public:
     void setDeltaTime();
     
     const float& getDeltaTime() const;
+
+    const float& getThisTime() const;
+
     
 private:
     float deltaTime;

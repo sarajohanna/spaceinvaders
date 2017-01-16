@@ -29,13 +29,19 @@ public:
     
     const int& getRadius() const;
     
+    const Coords& getCoords() const;
+    
+    void setCoords(const Coords& moveDistance);
+
+    
 private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
     Coords _center;
     int radius;
-    Timer _alienTimer;
+    int _alienSpeed = 2;
+    
     // std::vector<Bomb> _bombs;
 };
 

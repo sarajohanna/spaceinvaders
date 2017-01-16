@@ -33,7 +33,7 @@ private:
     Coords _coords;
     int _imgWidth = 32;
     int _imgHeight = 32;
-    float _speedX = 100;
+    float _speedX = 200;
     std::vector<Bullet> _bullets;
     Timer _bulletTimer;
     float _dtBullet = 0.1;

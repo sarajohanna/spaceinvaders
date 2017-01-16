@@ -31,6 +31,7 @@ private:
     int _imgWidthAlien = 32;
     int _numAliens = 26;
     int _aliensDistanceFromWall = 70;
+    Coords _alienMove;
 };
 
 #endif /* world_hpp */

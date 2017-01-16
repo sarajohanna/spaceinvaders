@@ -13,19 +13,19 @@ Alien::Alien(const Coords& coords)
 {
     _coords.x = coords.x;
     _coords.y = coords.y;
-    _center.x = _coords.x + (_imgWidth/2);
-    _center.y = _coords.y +(_imgHeight/2);
     radius = _imgHeight/2;
 }
 
 void Alien::update()
 {
-    _alienTimer.setDeltaTime();
+    const float& deltaTime = timer.getDeltaTime();
+    
+    _coords.x += (_alienSpeed * deltaTime);
+    _center.x = _coords.x + (_imgWidth/2);
+    _center.y = _coords.y +(_imgHeight/2);
 
-//    if (timer.getDeltaTime() > 0.02)
-//    {
-//        _coords.x += 10;
-//    }
+//    För att få dom att "hoppa": Flytta x positioner när dt från lastTimeMoved är y
+
 }
 
 void Alien::draw()
@@ -41,4 +41,18 @@ const Coords& Alien::getCenter() const
 const int& Alien::getRadius() const
 {
     return radius;
+}
+
+const Coords& Alien::getCoords() const
+{
+    return _coords;
+}
+
+void Alien::setCoords(const Coords& moveDistans)
+{
+    _alienSpeed *= -1;
+    _coords.y += moveDistans.y;
+    //_coords.x += moveDistans.x;
+
+    
 }

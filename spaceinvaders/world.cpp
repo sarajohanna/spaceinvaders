@@ -25,6 +25,7 @@ World::World()
     _aliens.reserve(_numAliens);
     int start = coordAlien.x;
     
+    // Line 1 with aliens
     for (int i = 0; i < _numAliens/2; ++i)
     {
         coordAlien.y = gameObj.winHeight/2;
@@ -32,6 +33,7 @@ World::World()
         coordAlien.x = coordAlien.x + (gameObj.winWidth - (start * 2 + _imgWidthAlien))/((_numAliens/2) - 1);
     }
     
+    // Line 2 with aliens
     coordAlien.x = start;
     for (int i = _numAliens/2; i < _numAliens; ++i)
     {
@@ -45,9 +47,46 @@ void World::update()
 {
     _ship.update();
     
+
+    
+    // Set alien movement
+    //_alienMove.x = -3;
+    _alienMove.y = 2;
+    
+    int alienMaxX = 0;
+    int alienMinX = gameObj.winWidth;
+    
+    for (int i = 0; i < _aliens.size(); i++)
+    {
+        // Get aliens max and min x-position
+        if (_aliens[i].getCoords().x > alienMaxX)
+            alienMaxX = _aliens[i].getCoords().x;
+        
+        if (_aliens[i].getCoords().x < alienMinX)
+            alienMinX = _aliens[i].getCoords().x;
+    
+        // If alien close to edges of screen, move down and reverse direction
+        if ((alienMaxX >= 750)||(alienMinX <= 30))
+        {
+            for (int j = 0; j < _aliens.size(); ++j)
+            {
+                _aliens[j].setCoords(_alienMove);
+            }
+        }
+            
+        else
+        {
+            for (int j = 0; j < _aliens.size(); ++j)
+            {
+                _aliens[j].update();
+            }
+        }
+    }
+
     //Collision detection alien and bullet
     for (int i = 0; i < _aliens.size(); ++i)
     {
+
         const int& alienRadius = _aliens[i].getRadius();
         const Coords& alienCenter = _aliens[i].getCenter();
         
@@ -72,7 +111,6 @@ void World::update()
                 
                 break;
             }
-        _aliens[i].update();
         }
     }
 }
