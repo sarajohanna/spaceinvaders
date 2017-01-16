@@ -283,6 +283,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_STYLE = all;
 			};
 			name = Debug;
 		};
@@ -294,6 +295,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_STYLE = all;
 			};
 			name = Release;
 		};
@@ -316,6 +318,7 @@
 				5E4372E91E22A6600066689A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

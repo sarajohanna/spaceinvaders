@@ -13,7 +13,7 @@ Alien::Alien(const Coords& coords)
 {
     _coords.x = coords.x;
     _coords.y = coords.y;
-    radius = _imgHeight/2;
+    radius = _imgHeight/2;    
 }
 
 void Alien::update()
@@ -52,7 +52,6 @@ void Alien::setCoords(const Coords& moveDistans)
 {
     _alienSpeed *= -1;
     _coords.y += moveDistans.y;
-    //_coords.x += moveDistans.x;
+    _coords.x += moveDistans.x;
 
-    
 }

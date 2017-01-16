@@ -50,8 +50,7 @@ void World::update()
 
     
     // Set alien movement
-    //_alienMove.x = -3;
-    _alienMove.y = 2;
+    _alienMove.y = _alienJumpY;
     
     int alienMaxX = 0;
     int alienMinX = gameObj.winWidth;
@@ -64,23 +63,30 @@ void World::update()
         
         if (_aliens[i].getCoords().x < alienMinX)
             alienMinX = _aliens[i].getCoords().x;
+    }
     
-        // If alien close to edges of screen, move down and reverse direction
-        if ((alienMaxX >= 750)||(alienMinX <= 30))
+    if (alienMaxX >= 750)
+        _alienMove.x = -_alienJumpX;
+    
+    else if (alienMinX <= 30)
+        _alienMove.x = _alienJumpX;
+    
+    // If alien close to edges of screen, move down and reverse direction
+    if ((alienMaxX >= 750)||(alienMinX <= 30))
+    {
+        
+        for (int j = 0; j < _aliens.size(); ++j)
         {
-            for (int j = 0; j < _aliens.size(); ++j)
-            {
-                _aliens[j].setCoords(_alienMove);
-            }
-            break;
+            _aliens[j].setCoords(_alienMove);
         }
-            
-        else
+    }
+    
+    // If not, move horisontally
+    else
+    {
+        for (int j = 0; j < _aliens.size(); ++j)
         {
-            for (int j = 0; j < _aliens.size(); ++j)
-            {
-                _aliens[j].update();
-            }
+            _aliens[j].update();
         }
     }
 

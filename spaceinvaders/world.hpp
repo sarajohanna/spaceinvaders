@@ -32,6 +32,8 @@ private:
     int _numAliens = 26;
     int _aliensDistanceFromWall = 70;
     Coords _alienMove;
+    int _alienJumpY = 5;
+    int _alienJumpX = 5;
 };
 
 #endif /* world_hpp */
