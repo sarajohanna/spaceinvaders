@@ -28,7 +28,7 @@ World::World()
     // Line 1 with aliens
     for (int i = 0; i < _numAliens/2; ++i)
     {
-        coordAlien.y = gameObj.winHeight/2;
+        coordAlien.y = gameObj.winHeight/2 - 50;
         _aliens.push_back(Alien(coordAlien));
         coordAlien.x = coordAlien.x + (gameObj.winWidth - (start * 2 + _imgWidthAlien))/((_numAliens/2) - 1);
     }
@@ -37,7 +37,7 @@ World::World()
     coordAlien.x = start;
     for (int i = _numAliens/2; i < _numAliens; ++i)
     {
-        coordAlien.y = gameObj.winHeight/2 - 50;
+        coordAlien.y = gameObj.winHeight/2;
         _aliens.push_back(Alien(coordAlien));
         coordAlien.x = coordAlien.x + (gameObj.winWidth - (start * 2 + _imgWidthAlien))/((_numAliens/2) - 1);
     }
@@ -47,22 +47,29 @@ void World::update()
 {
     _ship.update();
     
-
-    
     // Set alien movement
     _alienMove.y = _alienJumpY;
     
     int alienMaxX = 0;
     int alienMinX = gameObj.winWidth;
     
+    int alienMaxY = 0;
+    int alienMinY = gameObj.winHeight;
+    
     for (int i = 0; i < _aliens.size(); i++)
     {
-        // Get aliens max and min x-position
+        // Get aliens max and min x-position (max for the one farthest to the right and min for the one farthest to the left)
         if (_aliens[i].getCoords().x > alienMaxX)
             alienMaxX = _aliens[i].getCoords().x;
         
         if (_aliens[i].getCoords().x < alienMinX)
             alienMinX = _aliens[i].getCoords().x;
+        
+        if (_aliens[i].getCoords().y > alienMaxY)
+            alienMaxY = _aliens[i].getCoords().y;
+        
+        if (_aliens[i].getCoords().y < alienMinY)
+            alienMinY = _aliens[i].getCoords().y;
     }
     
     if (alienMaxX >= 750)
@@ -86,9 +93,38 @@ void World::update()
     {
         for (int j = 0; j < _aliens.size(); ++j)
         {
-            _aliens[j].update();
+            _aliens[j].update(j, (int)_aliens.size());
         }
     }
+    
+    //Bombs that will be dropped from the x/y coords of an alien in the lowest row
+    
+    const float& deltaTime = timer.getDeltaTime();
+    
+    _dtBomb = fmax(-_dtBombInterval, _dtBomb - deltaTime);
+    
+    //Looping through the last row of aliens
+    for (int i = 0; i < _aliens.size(); ++i)
+    {
+        //If the inteval has passed make bomb drop with a certain likelihood for each alien
+        if (_dtBomb - _dtBombInterval < 0)
+        {
+            double r = (double)rand()/(double)RAND_MAX;
+
+            if (r > 0.9)
+            {
+                _bombs.push_back(Bomb(_aliens[i].getCoords()));
+                _dtBomb += _dtBombInterval;
+            }
+        }
+    
+    }
+    
+    for (int i = 0; i < _bombs.size(); ++i)
+    {
+        _bombs[i].update();
+    }
+    
 
     //Collision detection alien and bullet
     for (int i = 0; i < _aliens.size(); ++i)
@@ -126,8 +162,12 @@ void World::draw()
 {
     SDL_RenderClear(gameObj.renderer);
     _ship.draw();
-    
-    for (int i = 0; i < _aliens.size(); ++i) {
+    for (int i = 0; i < _bombs.size(); ++i)
+    {
+        _bombs[i].draw();
+    }
+    for (int i = 0; i < _aliens.size(); ++i)
+    {
         _aliens[i].draw();
     }
 }

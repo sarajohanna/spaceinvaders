@@ -17,6 +17,7 @@
 		5E4373021E23F8760066689A /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4373001E23F8760066689A /* world.cpp */; };
 		5E4373051E2430A20066689A /* bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4373031E2430A20066689A /* bullet.cpp */; };
 		5E4373081E24413C0066689A /* timer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4373061E24413C0066689A /* timer.cpp */; };
+		5EFB3EB31E366DA9005567FD /* bomb.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5EFB3EB11E366DA9005567FD /* bomb.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,8 @@
 		5E4373041E2430A20066689A /* bullet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bullet.hpp; sourceTree = "<group>"; };
 		5E4373061E24413C0066689A /* timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
 		5E4373071E24413C0066689A /* timer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
+		5EFB3EB11E366DA9005567FD /* bomb.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bomb.cpp; sourceTree = "<group>"; };
+		5EFB3EB21E366DA9005567FD /* bomb.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bomb.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 				5E4373031E2430A20066689A /* bullet.cpp */,
 				5E4372FB1E23F8520066689A /* alien.hpp */,
 				5E4372FA1E23F8520066689A /* alien.cpp */,
+				5EFB3EB21E366DA9005567FD /* bomb.hpp */,
+				5EFB3EB11E366DA9005567FD /* bomb.cpp */,
 				5E4372F81E23E8C00066689A /* questions.hpp */,
 			);
 			path = spaceinvaders;
@@ -176,6 +181,7 @@
 			files = (
 				5E4373051E2430A20066689A /* bullet.cpp in Sources */,
 				5E4372F61E23E53E0066689A /* utils.cpp in Sources */,
+				5EFB3EB31E366DA9005567FD /* bomb.cpp in Sources */,
 				5E4372F31E22A74F0066689A /* gameObject.cpp in Sources */,
 				5E4373081E24413C0066689A /* timer.cpp in Sources */,
 				5E4372E41E22A6600066689A /* main.cpp in Sources */,

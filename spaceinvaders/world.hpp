@@ -28,12 +28,18 @@ public:
 private:
     Ship _ship;
     std::vector<Alien> _aliens;
+    Coords _coordAlien;
     int _imgWidthAlien = 32;
     int _numAliens = 26;
     int _aliensDistanceFromWall = 70;
     Coords _alienMove;
     int _alienJumpY = 5;
     int _alienJumpX = 5;
+    std::vector<Bomb> _bombs;
+    //Bomb _bomb;
+    double _dtBomb = 0;
+    double _dtBombInterval = 3;
+
 };
 
 #endif /* world_hpp */

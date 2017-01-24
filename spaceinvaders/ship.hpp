@@ -13,6 +13,7 @@
 #include "bullet.hpp"
 #include <stdio.h>
 #include <vector>
+#include <algorithm>
 
 // This ship will have a vector with bullets. It will be called in world and the coordinats will be sent to the constructor when created in world.
 
@@ -35,8 +36,8 @@ private:
     int _imgHeight = 32;
     float _speedX = 200;
     std::vector<Bullet> _bullets;
-    Timer _bulletTimer;
-    float _dtBullet = 0.1;
+    double _dtBullet = 0.0;
+    double _dtBulletInterval = 0.2;
 };
 
 

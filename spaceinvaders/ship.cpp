@@ -20,15 +20,18 @@ void Ship::update()
     //Update position of ship with its speed and delta time
     const float& deltaTime = timer.getDeltaTime();
     
+    _dtBullet = fmax(-_dtBulletInterval, _dtBullet - deltaTime);
     
     if ((keysHeld[KEY_RIGHT]) && (_coords.x < 750))
         _coords.x += _speedX * deltaTime;
     else if ((keysHeld[KEY_LEFT]) && (_coords.x > 30))
         _coords.x -= (_speedX * deltaTime);
     else if (keysHeld[KEY_SPACE])
-        _bulletTimer.setDeltaTime();
-        if (_bulletTimer.getDeltaTime() > _dtBullet)
+        if (_dtBullet - _dtBulletInterval < 0)
+        {
             _bullets.push_back(Bullet(_coords));
+            _dtBullet += _dtBulletInterval;
+        }
     
     // Uppdate bullets and if they are outside of screen, remove them
     for (int i = 0; i < _bullets.size(); ++i)

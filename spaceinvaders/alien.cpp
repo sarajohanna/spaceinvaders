@@ -16,7 +16,7 @@ Alien::Alien(const Coords& coords)
     radius = _imgHeight/2;    
 }
 
-void Alien::update()
+void Alien::update(const int& index, const int& nrOfAliens)
 {
     const float& deltaTime = timer.getDeltaTime();
     

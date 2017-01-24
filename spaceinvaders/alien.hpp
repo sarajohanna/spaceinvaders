@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "utils.hpp"
 #include "timer.hpp"
+#include "bomb.hpp"
+#include <vector>
 
 class Alien
 {
@@ -20,8 +22,7 @@ public:
     
     Alien(const Coords& coords);
     
-    //Not used now, maybe later if the aliens should move each X seconds
-    void update();
+    void update(const int& index, const int& nrOfAliens);
     
     void draw();
         
@@ -42,8 +43,6 @@ private:
     int radius;
     int _alienSpeed = 50;
     Coords _moveDistance;
-    
-    // std::vector<Bomb> _bombs;
 };
 
 

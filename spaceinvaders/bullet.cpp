@@ -20,7 +20,7 @@ void Bullet::update()
     _coords.y = (_coords.y - (deltaTime * _bulletSpeed));
     _center.x = _coords.x + (_imgWidth/2);
     _center.y = _coords.y + (_imgHeight/2);
-    radius = _imgHeight/2;
+    _radius = _imgHeight/2;
 }
 
 void Bullet::draw()
@@ -40,5 +40,5 @@ const Coords& Bullet::getCenter() const
 
 const int& Bullet::getRadius()
 {
-    return radius;
+    return _radius;
 }
