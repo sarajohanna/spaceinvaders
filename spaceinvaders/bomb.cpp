@@ -27,3 +27,18 @@ void Bomb::draw()
 {
     drawObject(SPRITE_BOMB, _coords, _imgWidth, _imgHeight);
 }
+
+const Coords& Bomb::getCoords()
+{
+    return _coords;
+}
+
+const Coords& Bomb::getCenter()
+{
+    return _center;
+}
+
+const int& Bomb::getRadius()
+{
+    return _radius;
+}

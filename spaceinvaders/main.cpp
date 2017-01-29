@@ -14,6 +14,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
+    srand(static_cast<unsigned int>(time(0)));
     // Initialize SDL
     if(SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) < 0)
         return 1;

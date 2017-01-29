@@ -29,9 +29,12 @@ public:
     void draw();
     
     std::vector<Bullet>& accessBullets();
-
+    
+    const Coords& getCenter() const;
+    
 private:
     Coords _coords;
+    Coords _center;
     int _imgWidth = 32;
     int _imgHeight = 32;
     float _speedX = 200;

@@ -98,7 +98,6 @@ void World::update()
     }
     
     //Bombs that will be dropped from the x/y coords of an alien in the lowest row
-    
     const float& deltaTime = timer.getDeltaTime();
     
     _dtBomb = fmax(-_dtBombInterval, _dtBomb - deltaTime);
@@ -109,9 +108,10 @@ void World::update()
         //If the inteval has passed make bomb drop with a certain likelihood for each alien
         if (_dtBomb - _dtBombInterval < 0)
         {
-            double r = (double)rand()/(double)RAND_MAX;
+            double r = rand();
+            double rd = r/RAND_MAX;
 
-            if (r > 0.9)
+            if (rd > 0.9)
             {
                 _bombs.push_back(Bomb(_aliens[i].getCoords()));
                 _dtBomb += _dtBombInterval;
@@ -142,10 +142,10 @@ void World::update()
             const Coords& bulletCenter = bullets[j].getCenter();
             double distance = sqrt(pow((bulletCenter.y - alienCenter.y), 2) + pow((bulletCenter.x - alienCenter.x), 2));
             
-            if ((distance) < (alienRadius))
+            if (distance < alienRadius)
             {
                 //Delete alien
-                _aliens[i]= _aliens[_aliens.size()-1];
+                _aliens[i] = _aliens[_aliens.size()-1];
                 _aliens.pop_back();
                 
                 //Delete bullet
@@ -155,6 +155,26 @@ void World::update()
                 break;
             }
         }
+    }
+    
+    //Collision detection ship and bomb
+    for (int i = 0; i < _bombs.size(); ++i)
+    {
+        const int& bombRadius = _bombs[i].getRadius();
+        const Coords& bombCenter = _bombs[i].getCenter();
+        const Coords& shipCenter = _ship.getCenter();
+        
+        double distance = sqrt(pow((shipCenter.y - bombCenter.y), 2) + pow((shipCenter.x - bombCenter.x), 2));
+        
+        if (distance < bombRadius*2)
+        {
+            //Delete bomb
+            _bombs[i] = _bombs[_bombs.size()-1];
+            _bombs.pop_back();
+            
+            break;
+        }
+        
     }
 }
 
