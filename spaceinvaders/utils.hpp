@@ -40,5 +40,10 @@ enum KEYS
 
 extern bool keysHeld[NUM_KEYS];
 
+void drawScoreAndLives(const int& score, const int& lives);
+
+void drawGameOver();
+
+
 
 #endif /* utils_hpp */

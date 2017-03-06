@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E093B1A1E565E72001B4755 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E093B191E565E72001B4755 /* SDL2_ttf.framework */; };
 		5E4372E41E22A6600066689A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5E4372E31E22A6600066689A /* main.cpp */; };
 		5E4372EE1E22A6D10066689A /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4372ED1E22A6D10066689A /* SDL2.framework */; };
 		5E4372F01E22A6E70066689A /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4372EF1E22A6E60066689A /* SDL2_image.framework */; };
@@ -33,6 +34,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5E093B191E565E72001B4755 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
 		5E4372E01E22A6600066689A /* spaceinvaders */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spaceinvaders; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E4372E31E22A6600066689A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		5E4372EB1E22A6BF0066689A /* Library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Library; path = ../../../../../Library; sourceTree = "<group>"; };
@@ -62,8 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E4372F01E22A6E70066689A /* SDL2_image.framework in Frameworks */,
 				5E4372EE1E22A6D10066689A /* SDL2.framework in Frameworks */,
+				5E4372F01E22A6E70066689A /* SDL2_image.framework in Frameworks */,
+				5E093B1A1E565E72001B4755 /* SDL2_ttf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +118,7 @@
 		5E4372EA1E22A6BF0066689A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5E093B191E565E72001B4755 /* SDL2_ttf.framework */,
 				5E4372EF1E22A6E60066689A /* SDL2_image.framework */,
 				5E4372ED1E22A6D10066689A /* SDL2.framework */,
 				5E4372EB1E22A6BF0066689A /* Library */,

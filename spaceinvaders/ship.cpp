@@ -72,3 +72,7 @@ const Coords& Ship::getCenter() const
     return _center;
 }
 
+Ship::~Ship()
+{
+    
+}

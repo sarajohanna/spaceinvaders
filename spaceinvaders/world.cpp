@@ -8,7 +8,7 @@
 
 #include "world.hpp"
 #include <cmath>
-#include<vector>
+#include <vector>
 
 World::World()
 {
@@ -17,6 +17,8 @@ World::World()
     coordShip.x = gameObj.winWidth/2;
     coordShip.y = gameObj.winHeight/1.1;
     _ship = Ship(coordShip);
+    _shipScores = 0;
+    _shipLives = 3;
     
     // Create vector with aliens
     Coords coordAlien;
@@ -53,23 +55,14 @@ void World::update()
     int alienMaxX = 0;
     int alienMinX = gameObj.winWidth;
     
-    int alienMaxY = 0;
-    int alienMinY = gameObj.winHeight;
-    
     for (int i = 0; i < _aliens.size(); i++)
     {
         // Get aliens max and min x-position (max for the one farthest to the right and min for the one farthest to the left)
         if (_aliens[i].getCoords().x > alienMaxX)
             alienMaxX = _aliens[i].getCoords().x;
         
-        if (_aliens[i].getCoords().x < alienMinX)
+        else if (_aliens[i].getCoords().x < alienMinX)
             alienMinX = _aliens[i].getCoords().x;
-        
-        if (_aliens[i].getCoords().y > alienMaxY)
-            alienMaxY = _aliens[i].getCoords().y;
-        
-        if (_aliens[i].getCoords().y < alienMinY)
-            alienMinY = _aliens[i].getCoords().y;
     }
     
     if (alienMaxX >= 750)
@@ -81,7 +74,6 @@ void World::update()
     // If alien close to edges of screen, move down and reverse direction
     if ((alienMaxX >= 750)||(alienMinX <= 30))
     {
-        
         for (int j = 0; j < _aliens.size(); ++j)
         {
             _aliens[j].setCoords(_alienMove);
@@ -102,7 +94,7 @@ void World::update()
     
     _dtBomb = fmax(-_dtBombInterval, _dtBomb - deltaTime);
     
-    //Looping through the last row of aliens
+    //Looping through aliens
     for (int i = 0; i < _aliens.size(); ++i)
     {
         //If the inteval has passed make bomb drop with a certain likelihood for each alien
@@ -152,6 +144,9 @@ void World::update()
                 bullets[j] = bullets[bullets.size()-1];
                 bullets.pop_back();
                 
+                _shipScores += 10;
+                
+                --i;
                 break;
             }
         }
@@ -172,15 +167,25 @@ void World::update()
             _bombs[i] = _bombs[_bombs.size()-1];
             _bombs.pop_back();
             
+            -- _shipLives;
+            --i;
             break;
         }
-        
     }
 }
 
 void World::draw()
 {
     SDL_RenderClear(gameObj.renderer);
+    
+    if(_shipLives <= 0)
+    {
+        drawGameOver();
+    }
+
+    
+    drawScoreAndLives(_shipScores, _shipLives);
+        
     _ship.draw();
     for (int i = 0; i < _bombs.size(); ++i)
     {
@@ -191,3 +196,15 @@ void World::draw()
         _aliens[i].draw();
     }
 }
+
+const int& World::getLives()
+{
+    return _shipLives;
+}
+
+void World::gameOver()
+{
+    drawGameOver();
+    
+}
+

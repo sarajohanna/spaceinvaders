@@ -32,6 +32,8 @@ public:
     
     const Coords& getCenter() const;
     
+    ~Ship();
+        
 private:
     Coords _coords;
     Coords _center;

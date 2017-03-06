@@ -18,15 +18,17 @@ int main(int argc, const char * argv[])
     // Initialize SDL
     if(SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) < 0)
         return 1;
-
+    TTF_Init();
+    
     // Create window and renderer with SDL, used for window and render assets in window. These game-stuff like renderer, window etc goes in "gameObject"
     gameObj.winWidth = 800;
     gameObj.winHeight = 600;
     
-    // SDL_Create returns an object, created witht the given parameters. win is pointing to that object so the object can be used later on.
     gameObj.win = SDL_CreateWindow("Spade Invaders", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, gameObj.winWidth, gameObj.winHeight, SDL_WINDOW_SHOWN);
     gameObj.renderer = SDL_CreateRenderer(gameObj.win, -1, SDL_RENDERER_ACCELERATED);
-    
+    gameObj.font = TTF_OpenFont("/Library/Fonts/Silom.ttf", 25);
+    gameObj.color = { 255, 255, 255 };
+
     // Load assets/sprites
     loadSprites();
     
@@ -40,9 +42,27 @@ int main(int argc, const char * argv[])
     {
         timer.setDeltaTime();
         
-        // Quit or update world
+        if (world.getLives() <= 0) {
+            
+            
+            
+            //SDL_RenderClear(gameObj.renderer);
+//            for (int i = 0; i < static_cast<int>(NUM_SPRITES); ++i)
+//            {
+//                SDL_DestroyTexture(gameObj.textures[i]);
+//            }
+            
+            
+            //SDL_DestroyTexture(gameObj.texturePoint);
+            //SDL_FreeSurface(gameObj.surface);
+            
+
+        }
+        
+        // Event handling
         while ( SDL_PollEvent(&gameObj.event) )
         {
+            
             if ((gameObj.event.type == SDL_QUIT)||(gameObj.event.type == SDL_KEYUP && gameObj.event.key.keysym.sym == SDLK_ESCAPE))
             {
                 gameIsRunning = false;
@@ -75,12 +95,28 @@ int main(int argc, const char * argv[])
         
         // Render the screen
         SDL_RenderPresent(gameObj.renderer);
+        
+        
     }
+    
     // Destroy renderer
     SDL_DestroyRenderer(gameObj.renderer);
     // Destroy window
     SDL_DestroyWindow(gameObj.win);
     // Destroy all sprites/textures loaded at the start
+    for (int i = 0; i < static_cast<int>(NUM_SPRITES); ++i)
+    {
+        SDL_DestroyTexture(gameObj.textures[i]);
+    }
+    
+    
+    SDL_DestroyTexture(gameObj.texture);
+    SDL_FreeSurface(gameObj.surface);
+    
+    TTF_CloseFont(gameObj.font);
+    
+    TTF_Quit();
+    SDL_Quit();
     
     return 0;
 }

@@ -25,6 +25,10 @@ public:
     
     void draw();
     
+    const int& getLives();
+    
+    void gameOver();
+    
 private:
     Ship _ship;
     std::vector<Alien> _aliens;
@@ -39,6 +43,9 @@ private:
     //Bomb _bomb;
     double _dtBomb = 0;
     double _dtBombInterval = 3;
+    int _shipScores;
+    int _shipLives;
+    
 
 };
 
